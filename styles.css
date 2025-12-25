@@ -198,7 +198,7 @@ body::before {
 .caricature-bride {
     position: absolute;
     left: 5%;
-    top: 20%;
+    top: 15%;
     width: 150px;
     height: 200px;
     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 200"><circle cx="75" cy="60" r="35" fill="%234A5D4E" opacity="0.8"/><ellipse cx="75" cy="130" rx="40" ry="60" fill="%23D4AF37" opacity="0.6"/><circle cx="75" cy="50" r="25" fill="%23FFF8F0"/><circle cx="65" cy="50" r="3" fill="%232C2C2C"/><circle cx="85" cy="50" r="3" fill="%232C2C2C"/><path d="M65,60 Q75,70 85,60" stroke="%23D4AF37" stroke-width="2" fill="none"/><path d="M50,30 Q75,20 100,30" stroke="%234A5D4E" stroke-width="15" fill="none" opacity="0.6"/><circle cx="75" cy="25" r="8" fill="%23D4AF37" opacity="0.8"/><path d="M35,100 Q75,90 115,100" stroke="%23D4AF37" stroke-width="3" fill="none" opacity="0.5"/></svg>') center/contain no-repeat;
@@ -210,7 +210,7 @@ body::before {
 .caricature-groom {
     position: absolute;
     right: 5%;
-    top: 25%;
+    top: 15%;
     width: 150px;
     height: 200px;
     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 200"><circle cx="75" cy="60" r="35" fill="%234A5D4E" opacity="0.8"/><rect x="35" y="100" width="80" height="80" rx="10" fill="%23FFF8F0" opacity="0.8"/><circle cx="75" cy="50" r="25" fill="%23FFF8F0"/><circle cx="65" cy="50" r="3" fill="%232C2C2C"/><circle cx="85" cy="50" r="3" fill="%232C2C2C"/><path d="M65,60 Q75,70 85,60" stroke="%23D4AF37" stroke-width="2" fill="none"/><path d="M50,25 Q75,15 100,25" stroke="%232C2C2C" stroke-width="3" fill="none"/><rect x="60" y="100" width="30" height="40" fill="%234A5D4E" opacity="0.6"/><path d="M60,120 L75,110 L90,120" stroke="%23D4AF37" stroke-width="2" fill="none"/></svg>') center/contain no-repeat;
@@ -1540,23 +1540,39 @@ body::before {
         right: 20px;
     }
 
-    /* Decorative elements adjustments */
-    .mandala-decoration {
-        width: 300px;
-        height: 300px;
-    }
+/* Decorative elements adjustments */
+.mandala-decoration {
+    width: 300px;
+    height: 300px;
+}
 
+.caricature-bride,
+.caricature-groom {
+    width: 80px;
+    height: 107px;
+    opacity: 0.3;
+}
+
+.caricature-bride {
+    left: 1%;
+    top: 5%;
+    z-index: 1;
+}
+
+.caricature-groom {
+    right: 1%;
+    top: 5%;
+    z-index: 1;
+}
+
+/* Hide caricatures on very small screens if needed */
+@media screen and (max-width: 380px) {
     .caricature-bride,
     .caricature-groom {
-        width: 100px;
-        height: 133px;
+        display: none;
     }
+}
 
-    /* Movie quote */
-    .movie-quote blockquote {
-        font-size: 1.2rem;
-        padding: 0 20px;
-    }
 }
 
 /* ========== Print Styles ========== */
@@ -1577,4 +1593,22 @@ body::before {
         min-height: auto;
         padding: 2rem;
     }
+}
+
+/* Caricature adjustments for tablets */
+.caricature-bride,
+.caricature-groom {
+    width: 120px;
+    height: 160px;
+    opacity: 0.5;
+}
+
+.caricature-bride {
+    left: 2%;
+    top: 10%;
+}
+
+.caricature-groom {
+    right: 2%;
+    top: 10%;
 }
