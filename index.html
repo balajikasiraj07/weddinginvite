@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for proper rendering on all devices -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Balaji & Krithika's Wedding Invitation - Join us for our special day">
+    
+    <!-- Page Title -->
+    <title>Balaji & Krithika - Wedding Invitation</title>
+    
+    <!-- Google Fonts for elegant typography -->
+    <!-- Playfair Display - Elegant serif for headings -->
+    <!-- Cormorant Garamond - Beautiful serif for body text -->
+    <!-- Tamil font for cultural text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Sans+Tamil:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- External CSS file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <!-- Navigation Menu - Fixed at top -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <!-- Wedding logo/monogram -->
+            <div class="nav-logo">B & K</div>
+            
+            <!-- Navigation links - will be hidden on mobile, shown via hamburger menu -->
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#events" class="nav-link">Events</a></li>
+                <li><a href="#story" class="nav-link">The Couple</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#rsvp" class="nav-link">RSVP</a></li>
+            </ul>
+            
+            <!-- Hamburger menu for mobile devices -->
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - First view when page loads -->
+    <section id="home" class="hero">
+        <!-- Layer 1: Background decorative mandala -->
+        <div class="mandala-decoration"></div>
+        
+        <!-- Layer 2: Caricatures -->
+        <div class="caricature-bride"></div>
+        <div class="caricature-groom"></div>
+        
+        <!-- Layer 3: Floating hearts -->
+        <div class="floating-hearts">
+            <span class="heart">♥</span>
+            <span class="heart">♥</span>
+            <span class="heart">♥</span>
+            <span class="heart">♥</span>
+            <span class="heart">♥</span>
+        </div>
+        
+        <!-- Traditional Tamil blessing at top -->
+        <div class="tamil-blessing">
+            <p class="tamil-text">திருமண வாழ்த்து</p>
+            <p class="blessing-translation">Wedding Blessings</p>
+        </div>
+        
+        <!-- Main couple names with animation -->
+        <div class="hero-content">
+            <h1 class="couple-names">
+                <span class="name name-1">Balaji</span>
+                <span class="ampersand">&</span>
+                <span class="name name-2">Krithika</span>
+            </h1>
+            
+            <!-- Wedding date -->
+            <p class="wedding-date">Getting Married on</p>
+            <p class="date-display">April 20, 2025</p>
+            
+            <!-- Decorative element -->
+            <div class="decorative-line"></div>
+            
+            <!-- Countdown timer -->
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-value" id="days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+            
+            <!-- Call to action button -->
+            <button class="cta-button" onclick="scrollToSection('events')">View Details</button>
+        </div>
+        
+        <!-- Decorative wave layer at bottom -->
+        <div class="wave-decoration"></div>
+    </section>
+    
+
+    <!-- Music Control Button -->
+    <div class="music-control" id="musicControl">
+        <button class="music-btn" onclick="toggleMusic()">
+            <span class="music-icon">🎵</span>
+            <span class="music-text">Play Music</span>
+        </button>
+    </div>
+    
+    <!-- Audio Element for Background Music -->
+    <!-- Replace src with your Tamil song URL -->
+    <audio id="backgroundMusic" loop>
+        <source src="your-song-url.mp3" type="audio/mpeg">
+        <!-- You can add multiple sources for browser compatibility -->
+    </audio>
+
+    <!-- Events Section - Redesigned with Journey Map -->
+    <section id="events" class="events-section">
+        <!-- Decorative top wave -->
+        <div class="section-wave-top">
+            <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                <path d="M0,50 C360,100 1080,0 1440,50 L1440,0 L0,0 Z" fill="#FFF8F0"></path>
+            </svg>
+        </div>
+        
+        <div class="container">
+            <h2 class="section-title">Our Wedding Journey</h2>
+            <p class="section-subtitle">Four beautiful ceremonies, One eternal bond</p>
+            
+            <!-- Journey Timeline Design -->
+            <div class="events-journey">
+                <!-- Journey Path SVG -->
+                <svg class="journey-path" viewBox="0 0 1200 400">
+                    <path d="M100,200 Q300,100 500,200 T900,200 L1100,200" 
+                          stroke="#D4AF37" 
+                          stroke-width="3" 
+                          fill="none" 
+                          stroke-dasharray="10,5"
+                          opacity="0.3"/>
+                </svg>
+                
+                <!-- Event Stations -->
+                <div class="journey-events">
+                    <!-- Engagement -->
+                    <div class="journey-event" data-event="1">
+                        <div class="event-bubble">
+                            <div class="event-icon">💍</div>
+                        </div>
+                        <div class="event-details">
+                            <h3>Engagement</h3>
+                            <p class="tamil">நிச்சயதார்த்தம்</p>
+                            <div class="event-info">
+                                <span>📅 April 20, 2025</span>
+                                <span>⏰ 10:00 AM</span>
+                                <span>📍 Temple Hall</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mehendi -->
+                    <div class="journey-event" data-event="2">
+                        <div class="event-bubble">
+                            <div class="event-icon">🎨</div>
+                        </div>
+                        <div class="event-details">
+                            <h3>Mehendi</h3>
+                            <p class="tamil">மருதாணி</p>
+                            <div class="event-info">
+                                <span>📅 April 20, 2025</span>
+                                <span>⏰ 4:00 PM</span>
+                                <span>📍 Bride's Home</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Wedding -->
+                    <div class="journey-event featured" data-event="3">
+                        <div class="event-bubble">
+                            <div class="event-icon">🪔</div>
+                        </div>
+                        <div class="event-details">
+                            <h3>Muhurtham</h3>
+                            <p class="tamil">முஹூர்த்தம்</p>
+                            <div class="event-info">
+                                <span>📅 April 20, 2025</span>
+                                <span>⏰ 9:00-10:30 AM</span>
+                                <span>📍 Sri Venkateswara Temple</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Reception -->
+                    <div class="journey-event" data-event="4">
+                        <div class="event-bubble">
+                            <div class="event-icon">🎊</div>
+                        </div>
+                        <div class="event-details">
+                            <h3>Reception</h3>
+                            <p class="tamil">வரவேற்பு</p>
+                            <div class="event-info">
+                                <span>📅 April 20, 2025</span>
+                                <span>⏰ 7:00 PM</span>
+                                <span>📍 Grand Ballroom</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Venue Map Section -->
+            <div class="venue-showcase">
+                <div class="venue-card main-venue">
+                    <div class="venue-image">
+                        <div class="venue-placeholder">
+                            <span>🛕</span>
+                            <p>Sri Venkateswara Temple</p>
+                        </div>
+                    </div>
+                    <button class="map-button" onclick="openMap()">View on Map 📍</button>
+                </div>
+            </div>
+            
+            <!-- Save to Calendar -->
+            <div class="calendar-section">
+                <button class="calendar-button" onclick="addToCalendar()">
+                    📅 Add to Your Calendar
+                </button>
+            </div>
+        </div>
+        
+        <!-- Decorative bottom wave -->
+        <div class="section-wave-bottom">
+            <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                <path d="M0,50 C360,0 1080,100 1440,50 L1440,100 L0,100 Z" fill="#FFF8F0"></path>
+            </svg>
+        </div>
+    </section>
+
+<!-- Our Story Section - Redesigned with Personal Touch -->
+<section id="story" class="story-section">
+    <div class="story-header">
+        <h2 class="section-title">Meet the Couple</h2>
+        <p class="section-subtitle">Two hearts, One journey</p>
+    </div>
+    
+    <div class="container">
+        <!-- Profile Cards Container -->
+        <div class="profiles-container">
+            <!-- Left Side - Balaji's Profile -->
+            <div class="profile-card balaji-card">
+                <div class="profile-decoration top-left"></div>
+                <div class="profile-decoration bottom-right"></div>
+                <div class="profile-image">
+                    <div class="profile-icon">🤵</div>
+                </div>
+                <h3>Balaji</h3>
+                <div class="profile-details">
+                    <div class="profile-role">The Groom</div>
+                </div>
+            </div>
+            
+            <!-- Right Side - Krithika's Profile -->
+            <div class="profile-card krithika-card">
+                <div class="profile-decoration top-left"></div>
+                <div class="profile-decoration bottom-right"></div>
+                <div class="profile-image">
+                    <div class="profile-icon">👰</div>
+                </div>
+                <h3>Krithika</h3>
+                <div class="profile-details">
+                    <div class="profile-role">The Bride</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+    <!-- Photo Gallery Section - Cinema Theme -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">Our Picture Perfect Moments</h2>
+            <p class="section-subtitle">Life is like a movie, and we're writing our script together</p>
+            
+            <!-- Cinema Reel Design -->
+            <div class="cinema-gallery">
+                <!-- Film Strip Top -->
+                <div class="film-strip film-strip-top"></div>
+                
+                <!-- Gallery Grid with Polaroid Effect -->
+                <div class="polaroid-gallery">
+                    <div class="polaroid-item" data-caption="First Selfie">
+                        <div class="polaroid-image">
+                            <img src="images/the_first_one.JPG" alt="Our Photo">
+                        </div>
+                        <p class="polaroid-caption">Our Beginning</p>
+                    </div>
+                    
+                    <div class="polaroid-item featured" data-caption="Marina Beach">
+                        <div class="polaroid-image">
+                            <img src="https://via.placeholder.com/400x400/f8f3e8/d4af37?text=Marina+Beach" alt="Marina Beach">
+                        </div>
+                        <p class="polaroid-caption">Marina Beach ❤️</p>
+                    </div>
+                    
+                    <div class="polaroid-item" data-caption="Movie Date">
+                        <div class="polaroid-image">
+                            <img src="https://via.placeholder.com/400x400/f8f3e8/d4af37?text=Movies" alt="Movie Date">
+                        </div>
+                        <p class="polaroid-caption">Movie Night 🎬</p>
+                    </div>
+                    
+                    <div class="polaroid-item" data-caption="Travel">
+                        <div class="polaroid-image">
+                            <img src="https://via.placeholder.com/400x400/f8f3e8/d4af37?text=Travel" alt="Travel">
+                        </div>
+                        <p class="polaroid-caption">Adventures ✈️</p>
+                    </div>
+                    
+                    <div class="polaroid-item" data-caption="Festival">
+                        <div class="polaroid-image">
+                            <img src="https://via.placeholder.com/400x400/f8f3e8/d4af37?text=Festival" alt="Festival">
+                        </div>
+                        <p class="polaroid-caption">Pongal Together</p>
+                    </div>
+                    
+                    <div class="polaroid-item" data-caption="Engagement">
+                        <div class="polaroid-image">
+                            <img src="https://via.placeholder.com/400x400/f8f3e8/d4af37?text=Engaged" alt="Engagement">
+                        </div>
+                        <p class="polaroid-caption">She Said Yes! 💍</p>
+                    </div>
+                </div>
+                
+                <!-- Film Strip Bottom -->
+                <div class="film-strip film-strip-bottom"></div>
+            </div>
+            
+            <!-- Movie Quote -->
+            <div class="movie-quote">
+                <blockquote>
+                    "என் வாழ்க்கை உன்னோடு தான் முழுமை அடைகிறது"
+                    <span>- Our favorite movie dialogue</span>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section with Google Form -->
+    <section id="rsvp" class="rsvp-section">
+        <div class="container">
+            <h2 class="section-title">RSVP</h2>
+            <p class="section-subtitle">We would love to have you with us</p>
+            
+            <!-- Instructions for Google Form -->
+            <div class="rsvp-info">
+                <p>Please confirm your attendance by filling out the form below.</p>
+                <p class="tamil-text">உங்கள் வருகையை உறுதிப்படுத்தவும்</p>
+            </div>
+            
+            <!-- Google Form Embed -->
+            <!-- Replace the src URL with your actual Google Form embed link -->
+            <div class="google-form-container">
+                <iframe 
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSfPLACEHOLDER_FORM_ID/viewform?embedded=true" 
+                    width="100%" 
+                    height="800" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0">
+                    Loading…
+                </iframe>
+            </div>
+            
+            <!-- Alternative RSVP method -->
+            <div class="alternative-rsvp">
+                <p>Having trouble with the form?</p>
+                <p>You can also RSVP by calling: +91 98765 43210</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <!-- Traditional blessing -->
+            <div class="footer-blessing">
+                <p class="tamil-text">வாழ்க வளமுடன்</p>
+                <p>May you live in prosperity</p>
+            </div>
+            
+            <!-- Contact information -->
+            <div class="footer-content">
+                <p>For any queries, contact:</p>
+                <p>Balaji: +91 98765 43210 | Krithika: +91 98765 43211</p>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="footer-copyright">
+                <p>&copy; 2025 Balaji & Krithika. Made with ❤️</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        ↑
+    </button>
+
+    <!-- External JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
