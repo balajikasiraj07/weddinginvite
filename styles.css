@@ -1667,7 +1667,12 @@ body::after {
 /* ========== Welcome Overlay ========== */
 .welcome-overlay {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(135deg, 
         #FFF8F0 0%, 
         #FFE8D6 30%, 
@@ -1710,24 +1715,6 @@ body::after {
     }
 }
 
-.welcome-mandala {
-    width: 120px;
-    height: 120px;
-    margin-bottom: 1rem;
-    background: radial-gradient(circle, 
-        transparent 20%, 
-        var(--light-gold) 20.5%, 
-        transparent 21%, 
-        transparent 30%, 
-        var(--light-gold) 30.5%, 
-        transparent 31%,
-        transparent 40%,
-        var(--light-gold) 40.5%,
-        transparent 41%
-    );
-    opacity: 0.4;
-    animation: rotate 30s linear infinite;
-}
 
 .welcome-tamil {
     font-family: var(--font-tamil);
