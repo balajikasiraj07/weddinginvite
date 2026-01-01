@@ -362,6 +362,25 @@ function enterInvitation() {
     }, 1000);
 }
 
+// ========== TAB VISIBILITY - PAUSE/RESUME MUSIC ==========
+document.addEventListener('visibilitychange', function() {
+    const audio = document.getElementById('backgroundMusic');
+    const musicBtn = document.querySelector('.music-btn');
+    const musicText = document.querySelector('.music-text');
+    
+    if (document.hidden) {
+        // Tab is hidden - pause music
+        if (isPlaying) {
+            audio.pause();
+        }
+    } else {
+        // Tab is visible - resume music if it was playing
+        if (isPlaying) {
+            audio.play().catch(() => {});
+        }
+    }
+});
+
 // Add overlay-active class on page load
 document.body.classList.add('overlay-active');
 
