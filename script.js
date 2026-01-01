@@ -281,6 +281,7 @@ function initializeScrollAnimations() {
 }
 
 // ========== MUSIC PLAYER ==========
+// ========== MUSIC PLAYER ==========
 let isPlaying = false;
 
 function toggleMusic() {
@@ -289,6 +290,7 @@ function toggleMusic() {
     const musicText = document.querySelector('.music-text');
     
     if (!isPlaying) {
+        audio.volume = 0.4;
         audio.play().then(() => {
             isPlaying = true;
             musicBtn.classList.add('playing');
