@@ -516,21 +516,23 @@ body::after {
 
 /* ========== Buttons ========== */
 .cta-button {
-    padding: 12px 30px;
+    padding: 14px 35px;
     font-family: var(--font-body);
     font-size: 1.1rem;
     font-weight: 600;
-    color: var(--cream-white);
-    background: linear-gradient(135deg, var(--primary-gold), var(--light-gold));
-    border: none;
+    color: var(--primary-gold);
+    background: var(--cream-white);
+    border: 2px solid var(--primary-gold);
     border-radius: 50px;
     cursor: pointer;
     transition: var(--transition);
     animation: fadeIn 1s ease 2.3s both;
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
 }
 
 .cta-button:hover {
+    background: var(--primary-gold);
+    color: var(--cream-white);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
 }

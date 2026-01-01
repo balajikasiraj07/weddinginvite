@@ -329,27 +329,35 @@ function toggleMusic() {
 }
 
 // ========== WELCOME OVERLAY ==========
+// ========== WELCOME OVERLAY ==========
 function enterInvitation() {
     const overlay = document.getElementById('welcomeOverlay');
     const audio = document.getElementById('backgroundMusic');
     const musicBtn = document.querySelector('.music-btn');
     const musicText = document.querySelector('.music-text');
     
-    // Start playing music
-    audio.volume = 1;
-    audio.load();
+    // Track visit count
+    let visitCount = parseInt(localStorage.getItem('weddingVisitCount') || '0');
+    visitCount++;
+    localStorage.setItem('weddingVisitCount', visitCount);
     
-    const playPromise = audio.play();
-    
-    if (playPromise !== undefined) {
-        playPromise.then(() => {
-            isPlaying = true;
-            audioLoaded = true;
-            if (musicBtn) musicBtn.classList.add('playing');
-            if (musicText) musicText.textContent = 'Pause';
-        }).catch((error) => {
-            console.log('Audio autoplay failed:', error);
-        });
+    // Only autoplay music for first 2 visits
+    if (visitCount <= 2) {
+        audio.volume = 1;
+        audio.load();
+        
+        const playPromise = audio.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                isPlaying = true;
+                audioLoaded = true;
+                if (musicBtn) musicBtn.classList.add('playing');
+                if (musicText) musicText.textContent = 'Pause';
+            }).catch((error) => {
+                console.log('Audio autoplay failed:', error);
+            });
+        }
     }
     
     // Hide overlay
