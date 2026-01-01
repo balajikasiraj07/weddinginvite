@@ -410,8 +410,7 @@ document.body.classList.add('overlay-active');
 
 // ========== MAP FUNCTION ==========
 function openMap() {
-    const venueLocation = 'Sri Venkateswara Temple, Chennai, Tamil Nadu';
-    window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(venueLocation)}`, '_blank');
+    window.open('https://maps.app.goo.gl/wGuQtCr75jgPhEpt8', '_blank');
 }
 
 // ========== CONSOLE MESSAGE ==========
