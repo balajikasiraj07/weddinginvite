@@ -296,7 +296,7 @@ function toggleMusic() {
             audioLoaded = true;
         }
         
-        audio.volume = 0.4;
+        audio.volume = 0.005;
         
         // Create a play promise with Chrome-friendly handling
         const playPromise = audio.play();
@@ -336,7 +336,7 @@ function enterInvitation() {
     const musicText = document.querySelector('.music-text');
     
     // Start playing music
-    audio.volume = 0.4;
+    audio.volume = 0.005;
     audio.load();
     
     const playPromise = audio.play();
