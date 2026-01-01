@@ -363,21 +363,45 @@ function enterInvitation() {
 }
 
 // ========== TAB VISIBILITY - PAUSE/RESUME MUSIC ==========
-document.addEventListener('visibilitychange', function() {
+// Works on both Chrome and Safari (iOS)
+let wasPlayingBeforeHidden = false;
+
+function handleVisibilityChange() {
     const audio = document.getElementById('backgroundMusic');
-    const musicBtn = document.querySelector('.music-btn');
-    const musicText = document.querySelector('.music-text');
     
-    if (document.hidden) {
+    if (document.hidden || document.webkitHidden) {
         // Tab is hidden - pause music
         if (isPlaying) {
+            wasPlayingBeforeHidden = true;
             audio.pause();
         }
     } else {
-        // Tab is visible - resume music if it was playing
-        if (isPlaying) {
+        // Tab is visible - resume music if it was playing before
+        if (wasPlayingBeforeHidden && isPlaying) {
             audio.play().catch(() => {});
         }
+    }
+}
+
+// Standard browsers
+document.addEventListener('visibilitychange', handleVisibilityChange);
+
+// Safari iOS fallback
+document.addEventListener('webkitvisibilitychange', handleVisibilityChange);
+
+// Additional iOS Safari handling - pause on page hide
+window.addEventListener('pagehide', function() {
+    const audio = document.getElementById('backgroundMusic');
+    if (isPlaying) {
+        wasPlayingBeforeHidden = true;
+        audio.pause();
+    }
+});
+
+window.addEventListener('pageshow', function() {
+    const audio = document.getElementById('backgroundMusic');
+    if (wasPlayingBeforeHidden && isPlaying) {
+        audio.play().catch(() => {});
     }
 });
 
