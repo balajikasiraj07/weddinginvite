@@ -328,6 +328,43 @@ function toggleMusic() {
     }
 }
 
+// ========== WELCOME OVERLAY ==========
+function enterInvitation() {
+    const overlay = document.getElementById('welcomeOverlay');
+    const audio = document.getElementById('backgroundMusic');
+    const musicBtn = document.querySelector('.music-btn');
+    const musicText = document.querySelector('.music-text');
+    
+    // Start playing music
+    audio.volume = 0.4;
+    audio.load();
+    
+    const playPromise = audio.play();
+    
+    if (playPromise !== undefined) {
+        playPromise.then(() => {
+            isPlaying = true;
+            audioLoaded = true;
+            if (musicBtn) musicBtn.classList.add('playing');
+            if (musicText) musicText.textContent = 'Pause';
+        }).catch((error) => {
+            console.log('Audio autoplay failed:', error);
+        });
+    }
+    
+    // Hide overlay
+    overlay.classList.add('hidden');
+    document.body.classList.remove('overlay-active');
+    
+    // Remove overlay from DOM after animation
+    setTimeout(() => {
+        overlay.remove();
+    }, 1000);
+}
+
+// Add overlay-active class on page load
+document.body.classList.add('overlay-active');
+
 // ========== MAP FUNCTION ==========
 function openMap() {
     const venueLocation = 'Sri Venkateswara Temple, Chennai, Tamil Nadu';
