@@ -1985,6 +1985,13 @@ body::after {
     opacity: 0.9;
 }
 
+.profile-family {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    color: var(--secondary-green);
+    margin-top: 1rem;
+}
+
 /* Prevent scrolling when overlay is visible */
 body.overlay-active {
     overflow: hidden;
