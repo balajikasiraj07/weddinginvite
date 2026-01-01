@@ -515,7 +515,7 @@ body::after {
 }
 
 /* ========== Buttons ========== */
-.cta-button, .calendar-button {
+.cta-button {
     padding: 12px 30px;
     font-family: var(--font-body);
     font-size: 1.1rem;
@@ -530,9 +530,83 @@ body::after {
     box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
 }
 
-.cta-button:hover, .calendar-button:hover {
+.cta-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+/* Calendar Button - Split Style */
+.calendar-button {
+    display: inline-flex;
+    align-items: stretch;
+    padding: 0;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 20px rgba(74, 93, 78, 0.3);
+    overflow: hidden;
+    font-family: var(--font-body);
+}
+
+.calendar-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(74, 93, 78, 0.4);
+}
+
+.calendar-date {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px;
+    background: var(--cream-white);
+    color: var(--secondary-green);
+    border: 2px solid var(--light-gold);
+    border-right: none;
+    border-radius: 50px 0 0 50px;
+}
+
+.calendar-icon {
+    font-size: 1.3rem;
+}
+
+.calendar-date-text {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.calendar-action {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    background: var(--primary-gold);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.calendar-button:hover .calendar-action {
+    background: var(--light-gold);
+}
+
+/* Mobile responsive for calendar button */
+@media screen and (max-width: 480px) {
+    .calendar-button {
+        flex-direction: column;
+        border-radius: 15px;
+    }
+    
+    .calendar-date {
+        border-radius: 15px 15px 0 0;
+        justify-content: center;
+    }
+    
+    .calendar-action {
+        border-radius: 0 0 15px 15px;
+        justify-content: center;
+    }
 }
 
 /* ========== Section Wave Dividers ========== */

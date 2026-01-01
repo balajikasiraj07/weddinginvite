@@ -139,8 +139,8 @@ function scrollToSection(sectionId) {
 function addToCalendar() {
     const eventDetails = {
         title: 'Balaji & Krithika Wedding',
-        details: 'We are getting married! Join us for our special day.',
-        location: 'Sri Venkateswara Temple, Chennai',
+        details: 'We are getting married! Join us for our special day at AIOBEU Swasthika. Sincerely, Balaji & Krithika',
+        location: 'AIOBEU Swasthika, 10 DR Radhakrishnan Salai, 7th St, Mylapore, Chennai, Tamil Nadu 600004',
         startDate: '2026-06-25T09:00:00',
         endDate: '2026-06-25T22:00:00'
     };
