@@ -698,66 +698,91 @@ body::after {
     gap: 0.5rem;
 }
 
-/* Venue Showcase */
-.venue-showcase {
-    margin: var(--spacing-large) 0;
-    display: flex;
-    justify-content: center;
-}
-
-.venue-card {
-    position: relative;
-    max-width: 600px;
-    width: 100%;
-}
-
+/* Venue Image and Info Styles */
 .venue-image {
-    height: 300px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 248, 240, 0.9));
-    border-radius: 20px;
+    height: 280px;
+    width: 100%;
+    max-width: 100%;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
-.venue-placeholder {
+.venue-image img {
+    width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, var(--cream-white), var(--soft-gray));
+    max-width: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.venue-info {
+    padding: 1.25rem 1.5rem;
+    text-align: center;
 }
 
-.venue-placeholder span {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-}
-
-.venue-placeholder p {
+.venue-name {
     font-family: var(--font-heading);
     font-size: 1.5rem;
     color: var(--secondary-green);
+    margin-bottom: 0.5rem;
+}
+
+.venue-showcase {
+    margin: var(--spacing-large) auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.venue-address {
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    line-height: 1.5;
+    user-select: all;
+    cursor: text;
+}
+
+.venue-address:hover {
+    color: var(--primary-gold);
+}
+
+ 
+.venue-card {
+    position: relative;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.venue-card * {
+    max-width: 100%;
 }
 
 .map-button {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px 20px;
-    background: var(--primary-gold);
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+    background: var(--secondary-green);
     color: white;
     border: none;
-    border-radius: 25px;
+    border-radius: 0 0 20px 20px;
     cursor: pointer;
     font-family: var(--font-body);
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .map-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    background: var(--primary-gold);
 }
 
 .section-title {
