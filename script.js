@@ -281,8 +281,8 @@ function initializeScrollAnimations() {
 }
 
 // ========== MUSIC PLAYER ==========
-// ========== MUSIC PLAYER ==========
 let isPlaying = false;
+let audioLoaded = false;
 
 function toggleMusic() {
     const audio = document.getElementById('backgroundMusic');
@@ -290,17 +290,41 @@ function toggleMusic() {
     const musicText = document.querySelector('.music-text');
     
     if (!isPlaying) {
+        // For Chrome: load audio first if not loaded
+        if (!audioLoaded) {
+            audio.load();
+            audioLoaded = true;
+        }
+        
         audio.volume = 0.4;
-        audio.play().then(() => {
-            isPlaying = true;
-            musicBtn.classList.add('playing');
-            musicText.textContent = 'Pause Music';
-        }).catch(() => alert('Please add your wedding song MP3 file to play music'));
+        
+        // Create a play promise with Chrome-friendly handling
+        const playPromise = audio.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                isPlaying = true;
+                musicBtn.classList.add('playing');
+                if (musicText) musicText.textContent = 'Pause';
+            }).catch((error) => {
+                console.log('Audio play failed:', error);
+                // Retry once after a short delay (helps on some Android devices)
+                setTimeout(() => {
+                    audio.play().then(() => {
+                        isPlaying = true;
+                        musicBtn.classList.add('playing');
+                        if (musicText) musicText.textContent = 'Pause';
+                    }).catch(() => {
+                        alert('Tap again to play music');
+                    });
+                }, 100);
+            });
+        }
     } else {
         audio.pause();
         isPlaying = false;
         musicBtn.classList.remove('playing');
-        musicText.textContent = 'Play Music';
+        if (musicText) musicText.textContent = 'Play';
     }
 }
 

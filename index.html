@@ -124,7 +124,7 @@
     
     <!-- Audio Element for Background Music -->
     <!-- Replace src with your Tamil song URL -->
-    <audio id="backgroundMusic" loop volume="0.4" preload="auto">
+    <audio id="backgroundMusic" loop preload="metadata" playsinline>
         <source src="audio/wedding_music.mp3" type="audio/mpeg">
     </audio>
 
@@ -376,14 +376,15 @@
             <!-- Replace the src URL with your actual Google Form embed link -->
             <div class="google-form-container">
                 <iframe 
-                    src="https://docs.google.com/forms/d/e/1FAIpQLSfPLACEHOLDER_FORM_ID/viewform?embedded=true" 
-                    width="100%" 
-                    height="800" 
-                    frameborder="0" 
-                    marginheight="0" 
-                    marginwidth="0">
-                    Loading…
-                </iframe>
+                src="https://docs.google.com/forms/d/e/1FAIpQLSfPLACEHOLDER_FORM_ID/viewform?embedded=true" 
+                width="100%" 
+                height="800" 
+                frameborder="0" 
+                marginheight="0" 
+                marginwidth="0"
+                loading="lazy">
+                Loading…
+            </iframe>
             </div>
             
             <!-- Alternative RSVP method -->
