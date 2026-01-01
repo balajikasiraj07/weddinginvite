@@ -1693,6 +1693,10 @@ body::after {
     padding: 2rem;
     position: relative;
     animation: welcomeFadeIn 1s ease forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 @keyframes welcomeFadeIn {
@@ -1707,9 +1711,9 @@ body::after {
 }
 
 .welcome-mandala {
-    width: 150px;
-    height: 150px;
-    margin: 0 auto 1.5rem;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1rem;
     background: radial-gradient(circle, 
         transparent 20%, 
         var(--light-gold) 20.5%, 
@@ -1738,7 +1742,7 @@ body::after {
     font-size: 1rem;
     color: var(--secondary-green);
     font-style: italic;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .welcome-names {
@@ -1761,11 +1765,11 @@ body::after {
 
 .welcome-invite {
     font-family: var(--font-body);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: var(--secondary-green);
     letter-spacing: 3px;
     text-transform: uppercase;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 .welcome-enter-btn {
