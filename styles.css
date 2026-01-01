@@ -651,6 +651,78 @@ body::after {
     z-index: 2;
 }
 
+/* Clean Event Cards */
+.events-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto var(--spacing-large);
+}
+
+.event-card-clean {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 2rem 1.5rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    transition: all 0.3s ease;
+}
+
+.event-card-clean:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    border-color: var(--primary-gold);
+}
+
+.event-card-clean h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--secondary-green);
+    margin-bottom: 0.25rem;
+}
+
+.event-tamil {
+    font-family: var(--font-tamil);
+    font-size: 1.1rem;
+    color: var(--primary-gold);
+    margin-bottom: 1.25rem;
+}
+
+.event-details-clean {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--charcoal);
+}
+
+.event-details-clean span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* Mobile: Stack vertically */
+@media screen and (max-width: 768px) {
+    .events-cards {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .event-card-clean {
+        padding: 1.5rem 1rem;
+    }
+    
+    .event-card-clean h3 {
+        font-size: 1.3rem;
+    }
+}
+
 /* Journey Timeline Design */
 .events-journey {
     position: relative;
