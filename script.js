@@ -328,23 +328,7 @@ function toggleMusic() {
     }
 }
 
-// ========== ENVELOPE ANIMATION ==========
-function openEnvelope() {
-    const envelope = document.querySelector('.envelope');
-    const tapHint = document.querySelector('.tap-hint');
-    
-    // Hide the tap hint
-    if (tapHint) tapHint.style.opacity = '0';
-    
-    // Open the envelope flap
-    envelope.classList.add('opened');
-    
-    // After card rises, trigger the full entrance
-    setTimeout(() => {
-        enterInvitation();
-    }, 1800);
-}
-
+// ========== WELCOME OVERLAY ==========
 // ========== WELCOME OVERLAY ==========
 function enterInvitation() {
     const overlay = document.getElementById('welcomeOverlay');
@@ -376,7 +360,7 @@ function enterInvitation() {
         }
     }
     
-    // Hide overlay with fade
+    // Hide overlay
     overlay.classList.add('hidden');
     document.body.classList.remove('overlay-active');
     

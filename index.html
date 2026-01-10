@@ -32,35 +32,22 @@
 </head>
 <body>
 
-<!-- Welcome Overlay - Envelope Design -->
+    <!-- Welcome Overlay - Tap to Enter -->
 <div class="welcome-overlay" id="welcomeOverlay">
-    <div class="envelope-container">
-        <!-- Envelope Back -->
-        <div class="envelope">
-            <!-- Envelope flap (top triangle) -->
-            <div class="envelope-flap"></div>
-            
-            <!-- Invitation card inside -->
-            <div class="invitation-card">
-                <p class="card-tamil">சுபம்</p>
-                <p class="card-subtitle">You're Invited</p>
-                <div class="card-names">
-                    <span>Balaji</span>
-                    <span class="card-amp">&</span>
-                    <span>Krithika</span>
-                </div>
-                <p class="card-event">Wedding Celebration</p>
-                <p class="card-date">June 25, 2026</p>
-            </div>
-            
-            <!-- Wax Seal - Clickable -->
-            <div class="wax-seal" onclick="openEnvelope()">
-                <span class="seal-monogram">B & K</span>
-            </div>
-            
-            <!-- Tap hint -->
-            <p class="tap-hint">Tap the seal to open</p>
+    <div class="welcome-content">
+        <div class="welcome-mandala"></div>
+        <p class="welcome-tamil">சுபம்</p>
+        <p class="welcome-blessing">Auspicious Beginnings</p>
+        <div class="welcome-names">
+            <span>Balaji</span>
+            <span class="welcome-amp">&</span>
+            <span>Krithika</span>
         </div>
+        <p class="welcome-invite">Wedding Invitation</p>
+        <button class="welcome-enter-btn" onclick="enterInvitation()">
+            <span>Tap to Enter</span>
+            <span class="welcome-music-hint">🎵 Music will play</span>
+        </button>
     </div>
 </div>
     
