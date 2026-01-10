@@ -1837,7 +1837,7 @@ body::after {
     }
 }
 
-/* ========== Welcome Overlay ========== */
+/* ========== Welcome Overlay - Envelope Design ========== */
 .welcome-overlay {
     position: fixed;
     top: 0;
@@ -1847,17 +1847,17 @@ body::after {
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg, 
-        #FFF8F0 0%, 
-        #FFE8D6 30%, 
-        #F5DEC4 60%, 
-        #E8D4B8 100%
+        #1a1510 0%, 
+        #2a2418 30%, 
+        #1a1510 60%, 
+        #0f0d0a 100%
     );
     z-index: 10000;
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 1;
-    transition: opacity 0.8s ease, visibility 0.8s ease;
+    transition: opacity 1s ease, visibility 1s ease;
 }
 
 .welcome-overlay.hidden {
@@ -1866,133 +1866,301 @@ body::after {
     pointer-events: none;
 }
 
-.welcome-content {
-    text-align: center;
-    padding: 2rem;
+.envelope-container {
+    perspective: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Main Envelope */
+.envelope {
     position: relative;
-    animation: welcomeFadeIn 1s ease forwards;
+    width: 340px;
+    height: 240px;
+    background: linear-gradient(145deg, #e8dcc8 0%, #d4c4a8 50%, #c9b896 100%);
+    border-radius: 4px;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transform-style: preserve-3d;
+}
+
+/* Paper texture overlay */
+.envelope::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    border-radius: 4px;
+}
+
+/* Envelope fold lines */
+.envelope::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(135deg, transparent 49%, rgba(0,0,0,0.03) 50%, transparent 51%),
+        linear-gradient(-135deg, transparent 49%, rgba(0,0,0,0.03) 50%, transparent 51%);
+    pointer-events: none;
+}
+
+/* Envelope Flap (Top Triangle) */
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(180deg, #ddd0bc 0%, #d4c4a8 100%);
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+    transform-origin: top center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 5;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Flap inner shadow/fold line */
+.envelope-flap::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, 
+        rgba(255,255,255,0.2) 0%, 
+        transparent 30%,
+        rgba(0,0,0,0.05) 100%
+    );
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+}
+
+/* Flap opened state */
+.envelope.opened .envelope-flap {
+    transform: rotateX(-180deg);
+}
+
+/* Invitation Card Inside */
+.invitation-card {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background: linear-gradient(135deg, #fffef9 0%, #faf6ed 100%);
+    border-radius: 4px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 1.5rem;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
+    transform: translateY(0);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
+    z-index: 1;
+    border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
-@keyframes welcomeFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Card rises when envelope opens */
+.envelope.opened .invitation-card {
+    transform: translateY(-180px);
 }
 
-
-.welcome-tamil {
+.card-tamil {
     font-family: var(--font-tamil);
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     color: var(--primary-gold);
     margin-bottom: 0.25rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.welcome-blessing {
+.card-subtitle {
     font-family: var(--font-body);
-    font-size: 1rem;
-    color: var(--secondary-green);
-    font-style: italic;
-    margin-bottom: 1.5rem;
-}
-
-.welcome-names {
-    font-family: var(--font-heading);
-    font-size: clamp(2rem, 8vw, 3.5rem);
-    color: var(--secondary-green);
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-}
-
-.welcome-amp {
-    color: var(--primary-gold);
-    font-style: italic;
-    font-size: 0.8em;
-}
-
-.welcome-invite {
-    font-family: var(--font-body);
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     color: var(--secondary-green);
     letter-spacing: 3px;
     text-transform: uppercase;
-    margin-bottom: 2rem;
+    margin-bottom: 0.75rem;
 }
 
-.welcome-enter-btn {
+.card-names {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--secondary-green);
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    padding: 1rem 2.5rem;
-    background: linear-gradient(135deg, var(--primary-gold), var(--light-gold));
-    color: white;
-    border: none;
-    border-radius: 50px;
+    margin-bottom: 0.5rem;
+}
+
+.card-amp {
+    color: var(--primary-gold);
+    font-style: italic;
+    font-size: 1.4rem;
+}
+
+.card-event {
     font-family: var(--font-body);
-    font-size: 1.2rem;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 
-        0 4px 20px rgba(212, 175, 55, 0.4),
-        0 0 40px rgba(212, 175, 55, 0.2);
-    transition: all 0.3s ease;
-    animation: welcomePulse 2s ease-in-out infinite;
+    font-size: 1rem;
+    color: var(--charcoal);
+    margin-bottom: 0.25rem;
 }
 
-@keyframes welcomePulse {
-    0%, 100% {
-        transform: scale(1);
-        box-shadow: 
-            0 4px 20px rgba(212, 175, 55, 0.4),
-            0 0 40px rgba(212, 175, 55, 0.2);
-    }
-    50% {
-        transform: scale(1.05);
-        box-shadow: 
-            0 6px 30px rgba(212, 175, 55, 0.5),
-            0 0 60px rgba(212, 175, 55, 0.3);
-    }
-}
-
-.welcome-enter-btn:hover {
-    transform: scale(1.08);
-    box-shadow: 
-        0 8px 35px rgba(212, 175, 55, 0.5),
-        0 0 50px rgba(212, 175, 55, 0.3);
-}
-
-.welcome-enter-btn:active {
-    transform: scale(1);
-}
-
-.welcome-music-hint {
-    font-size: 0.85rem;
-    font-weight: 400;
-    opacity: 0.9;
-}
-
-.profile-family {
+.card-date {
     font-family: var(--font-heading);
-    font-size: 0.95rem;
-    color: var(--secondary-green);
-    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: var(--primary-gold);
+}
+
+/* Wax Seal */
+.wax-seal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    background: radial-gradient(circle at 30% 30%, 
+        #c62828 0%, 
+        #8b0000 40%, 
+        #5c0000 100%
+    );
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.4),
+        inset 0 2px 4px rgba(255, 255, 255, 0.2),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Seal wax drip effect */
+.wax-seal::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 10px;
+    width: 15px;
+    height: 20px;
+    background: radial-gradient(ellipse at center, #a12020 0%, #8b0000 100%);
+    border-radius: 50% 50% 50% 50%;
+    transform: rotate(-20deg);
+}
+
+.wax-seal::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 8px;
+    width: 18px;
+    height: 15px;
+    background: radial-gradient(ellipse at center, #a12020 0%, #8b0000 100%);
+    border-radius: 50%;
+    transform: rotate(15deg);
+}
+
+.wax-seal:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.5),
+        inset 0 2px 4px rgba(255, 255, 255, 0.2),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.wax-seal:active {
+    transform: translate(-50%, -50%) scale(0.95);
+}
+
+.seal-monogram {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    color: #ffd700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+    z-index: 1;
+}
+
+/* Hide seal when opened */
+.envelope.opened .wax-seal {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    transition: all 0.3s ease;
+}
+
+/* Tap Hint */
+.tap-hint {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 1px;
+    animation: hintPulse 2s ease-in-out infinite;
+}
+
+@keyframes hintPulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+.envelope.opened ~ .tap-hint,
+.envelope.opened + .tap-hint {
+    display: none;
+}
+
+/* Hide hint when opened */
+.envelope.opened .tap-hint {
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 /* Prevent scrolling when overlay is visible */
 body.overlay-active {
     overflow: hidden;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 480px) {
+    .envelope {
+        width: 290px;
+        height: 200px;
+    }
+    
+    .wax-seal {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .seal-monogram {
+        font-size: 0.8rem;
+    }
+    
+    .card-names {
+        font-size: 1.5rem;
+    }
+    
+    .card-tamil {
+        font-size: 1.5rem;
+    }
+    
+    .envelope.opened .invitation-card {
+        transform: translateY(-150px);
+    }
 }
