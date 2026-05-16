@@ -1150,6 +1150,16 @@ body.overlay-active {
 
 /* ========== Responsive ========== */
 @media screen and (max-width: 768px) {
+    .hero {
+        padding-top: 0.5rem;
+        align-items: flex-start;
+        padding-bottom: 2rem;
+    }
+
+    .hero-content {
+        margin-top: 3rem;
+    }
+
     .events-cards {
         grid-template-columns: 1fr;
         gap: 1.5rem;
