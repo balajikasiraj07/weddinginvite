@@ -91,6 +91,54 @@ body.overlay-active {
     transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
+/* Corner ornaments using pseudo-elements on a wrapper */
+.welcome-overlay .welcome-frame {
+    position: absolute;
+    inset: 24px;
+    pointer-events: none;
+}
+
+.welcome-frame::before,
+.welcome-frame::after {
+    content: '';
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    border-color: var(--primary-gold);
+    border-style: solid;
+    opacity: 0.55;
+}
+
+.welcome-frame::before {
+    top: 0; left: 0;
+    border-width: 2px 0 0 2px;
+}
+
+.welcome-frame::after {
+    bottom: 0; right: 0;
+    border-width: 0 2px 2px 0;
+}
+
+.welcome-frame .corner-tr,
+.welcome-frame .corner-bl {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    border-color: var(--primary-gold);
+    border-style: solid;
+    opacity: 0.55;
+}
+
+.welcome-frame .corner-tr {
+    top: 0; right: 0;
+    border-width: 2px 2px 0 0;
+}
+
+.welcome-frame .corner-bl {
+    bottom: 0; left: 0;
+    border-width: 0 0 2px 2px;
+}
+
 .welcome-overlay.hidden {
     opacity: 0;
     visibility: hidden;
@@ -104,15 +152,33 @@ body.overlay-active {
     flex-direction: column;
     align-items: center;
     animation: fadeInUp 1s ease forwards;
+    position: relative;
+    z-index: 1;
 }
 
-.welcome-mandala {
-    width: 80px;
-    height: 80px;
-    border: 2px solid var(--light-gold);
-    border-radius: 50%;
-    margin-bottom: 1.5rem;
-    animation: rotate 20s linear infinite;
+.welcome-ornament-line {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.2rem;
+}
+
+.welcome-ornament-line span {
+    display: block;
+    height: 1px;
+    width: 50px;
+    background: linear-gradient(90deg, transparent, var(--primary-gold));
+}
+
+.welcome-ornament-line span:last-child {
+    background: linear-gradient(90deg, var(--primary-gold), transparent);
+}
+
+.welcome-ornament-line em {
+    font-style: normal;
+    color: var(--primary-gold);
+    font-size: 1rem;
+    line-height: 1;
 }
 
 .welcome-tamil {
@@ -178,7 +244,7 @@ body.overlay-active {
 
 @keyframes welcomePulse {
     0%, 100% { transform: scale(1); box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4); }
-    50% { transform: scale(1.05); box-shadow: 0 6px 30px rgba(212, 175, 55, 0.5); }
+    50% { transform: scale(1.05); box-shadow: 0 6px 30px rgba(212, 175, 55, 0.6); }
 }
 
 .welcome-enter-btn:hover {
