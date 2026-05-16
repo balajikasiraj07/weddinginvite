@@ -263,7 +263,7 @@ body.overlay-active {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: var(--spacing-large) var(--spacing-medium);
+    padding: 1.5rem var(--spacing-medium) var(--spacing-large);
     position: relative;
     z-index: 2;
 }
