@@ -1172,7 +1172,6 @@ body.overlay-active {
     }
 
     .couple-names {
-        flex-direction: column;
         gap: 0.5rem;
     }
 
