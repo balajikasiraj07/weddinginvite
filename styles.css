@@ -311,10 +311,53 @@ body.overlay-active {
     font-style: italic;
 }
 
-.date-display {
+.event-dates-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.event-date-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    background: rgba(74, 93, 78, 0.12);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 12px;
+    padding: 0.6rem 1.1rem;
+}
+
+.event-date-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--secondary-green);
+    font-weight: 600;
+}
+
+.event-date-val {
     font-family: var(--font-heading);
-    font-size: 2rem;
+    font-size: 1.6rem;
+    color: var(--secondary-green);
+    line-height: 1;
+}
+
+.event-date-city {
+    font-size: 0.65rem;
+    color: var(--secondary-green);
+    opacity: 0.75;
+    letter-spacing: 0.5px;
+}
+
+.event-date-sep {
+    font-size: 1.5rem;
     color: var(--primary-gold);
+    opacity: 0.5;
+    align-self: center;
     margin-bottom: 0.5rem;
 }
 
