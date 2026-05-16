@@ -263,7 +263,7 @@ body.overlay-active {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1.5rem var(--spacing-medium) var(--spacing-large);
+    padding: var(--spacing-large) var(--spacing-medium);
     position: relative;
     z-index: 2;
 }
@@ -303,7 +303,7 @@ body.overlay-active {
     width: 100px;
     height: 2px;
     background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
-    margin: 0.75rem auto;
+    margin: var(--spacing-medium) auto;
 }
 
 .invite-prelude {
@@ -311,7 +311,7 @@ body.overlay-active {
     font-size: 1.2rem;
     color: var(--secondary-green);
     font-style: italic;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
 }
 
 .families-row {
@@ -319,7 +319,7 @@ body.overlay-active {
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
     flex-wrap: wrap;
 }
 
@@ -353,7 +353,7 @@ body.overlay-active {
     font-size: 1.15rem;
     color: var(--secondary-green);
     font-style: italic;
-    margin-bottom: 0.4rem;
+    margin-bottom: 1rem;
 }
 
 .couple-names {
@@ -432,7 +432,7 @@ body.overlay-active {
     display: flex;
     gap: 2rem;
     justify-content: center;
-    margin: 0.75rem 0;
+    margin: var(--spacing-medium) 0;
 }
 
 .countdown-item {
@@ -1158,6 +1158,26 @@ body.overlay-active {
 
     .hero-content {
         margin-top: 3rem;
+    }
+
+    .decorative-line {
+        margin: 0.75rem auto;
+    }
+
+    .invite-prelude {
+        margin-bottom: 0.75rem;
+    }
+
+    .families-row {
+        margin-bottom: 0.75rem;
+    }
+
+    .invite-line {
+        margin-bottom: 0.4rem;
+    }
+
+    .countdown {
+        margin: 0.75rem 0;
     }
 
     .events-cards {
