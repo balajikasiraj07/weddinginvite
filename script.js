@@ -1,18 +1,9 @@
-// JavaScript for Balaji & Krithika's Wedding Invitation
-// This file handles all the interactive features of the website
-
 document.addEventListener('DOMContentLoaded', function() {
     initializeCountdown();
-    initializeNavigation();
-    initializeScrollEffects();
     initializeBackToTop();
-    initializeParallax();
     createBackgroundParticles();
-    initialize3DTilt();
-    initializeGalleryLightbox();
-    initializeTouchSwipe();
     initializeScrollAnimations();
-    
+
     setTimeout(() => {
         document.querySelector('.hero-content').classList.add('animate-in');
     }, 500);
@@ -21,94 +12,30 @@ document.addEventListener('DOMContentLoaded', function() {
 // ========== COUNTDOWN TIMER ==========
 function initializeCountdown() {
     const weddingDate = new Date('2026-06-25T09:00:00').getTime();
-    
+
     const countdownInterval = setInterval(function() {
         const now = new Date().getTime();
         const distance = weddingDate - now;
-        
+
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
+
         document.getElementById('days').innerText = formatNumber(days);
         document.getElementById('hours').innerText = formatNumber(hours);
         document.getElementById('minutes').innerText = formatNumber(minutes);
         document.getElementById('seconds').innerText = formatNumber(seconds);
-        
+
         if (distance < 0) {
             clearInterval(countdownInterval);
-            document.getElementById('countdown').innerHTML = '<h2>The Wedding Day is Here! 🎉</h2>';
+            document.getElementById('countdown').innerHTML = '<h2>The Wedding Day is Here!</h2>';
         }
     }, 1000);
 }
 
 function formatNumber(num) {
     return num < 10 ? '0' + num : num;
-}
-
-// ========== NAVIGATION MENU ==========
-function initializeNavigation() {
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('navMenu');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    hamburger.addEventListener('click', function() {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        });
-    });
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-            
-            if (targetSection) {
-                const navbarHeight = document.querySelector('.navbar').offsetHeight;
-                const targetPosition = targetSection.offsetTop - navbarHeight;
-                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-            }
-        });
-    });
-}
-
-// ========== SCROLL EFFECTS ==========
-function initializeScrollEffects() {
-    const navbar = document.getElementById('navbar');
-    
-    window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        if (scrollTop > 100) {
-            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-        } else {
-            navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
-        }
-    });
-    
-    observeElements();
-}
-
-function observeElements() {
-    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-    
-    const observer = new IntersectionObserver(function(entries, observer) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-    
-    document.querySelectorAll('.event-card, .timeline-item, .gallery-item').forEach(el => observer.observe(el));
 }
 
 // ========== BACK TO TOP BUTTON ==========
@@ -130,8 +57,7 @@ function scrollToTop() {
 function scrollToSection(sectionId) {
     const section = document.getElementById(sectionId);
     if (section) {
-        const navbarHeight = document.querySelector('.navbar').offsetHeight;
-        window.scrollTo({ top: section.offsetTop - navbarHeight, behavior: 'smooth' });
+        window.scrollTo({ top: section.offsetTop, behavior: 'smooth' });
     }
 }
 
@@ -166,24 +92,6 @@ function formatDateForCalendar(dateString) {
     return `${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}T${String(d.getHours()).padStart(2,'0')}${String(d.getMinutes()).padStart(2,'0')}${String(d.getSeconds()).padStart(2,'0')}`;
 }
 
-// ========== PARALLAX SCROLLING ==========
-function initializeParallax() {
-    const caricatureBride = document.querySelector('.caricature-bride');
-    const caricatureGroom = document.querySelector('.caricature-groom');
-    const mandala = document.querySelector('.mandala-decoration');
-    const hearts = document.querySelectorAll('.heart');
-    
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const rate = scrolled * -0.5;
-        
-        if (caricatureBride) caricatureBride.style.transform = `translateY(${rate * 0.8}px) rotate(${scrolled * 0.02}deg)`;
-        if (caricatureGroom) caricatureGroom.style.transform = `translateY(${rate * 0.6}px) rotate(${-scrolled * 0.02}deg)`;
-        if (mandala) mandala.style.transform = `rotate(${scrolled * 0.1}deg) scale(${1 + scrolled * 0.0002})`;
-        hearts.forEach((heart, i) => { heart.style.transform = `translateY(${rate * (0.5 + i * 0.1)}px)`; });
-    });
-}
-
 // ========== BACKGROUND PARTICLES ==========
 function createBackgroundParticles() {
     const style = document.createElement('style');
@@ -196,7 +104,7 @@ function createBackgroundParticles() {
         }
     `;
     document.head.appendChild(style);
-    
+
     for (let i = 0; i < 30; i++) {
         const particle = document.createElement('div');
         particle.className = 'background-particle';
@@ -216,68 +124,17 @@ function createBackgroundParticles() {
     }
 }
 
-// ========== 3D TILT EFFECT ==========
-function initialize3DTilt() {
-    document.querySelectorAll('.event-card, .countdown-item').forEach(card => {
-        card.addEventListener('mouseenter', function() { this.style.transition = 'transform 0.1s'; });
-        card.addEventListener('mousemove', function(e) {
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left, y = e.clientY - rect.top;
-            const rotateX = (y - rect.height / 2) / 10, rotateY = (rect.width / 2 - x) / 10;
-            this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-        });
-        card.addEventListener('mouseleave', function() {
-            this.style.transition = 'transform 0.5s';
-            this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
-        });
-    });
-}
-
-// ========== GALLERY LIGHTBOX ==========
-function initializeGalleryLightbox() {
-    document.querySelectorAll('.gallery-item img, .polaroid-image img').forEach(item => {
-        item.addEventListener('click', function() {
-            const lightbox = document.createElement('div');
-            lightbox.className = 'lightbox';
-            lightbox.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;z-index:9999;cursor:pointer;';
-            lightbox.innerHTML = `<span style="position:absolute;top:20px;right:30px;color:white;font-size:40px;cursor:pointer;">&times;</span><img src="${this.src}" alt="${this.alt}" style="max-width:90%;max-height:90%;object-fit:contain;border-radius:10px;">`;
-            document.body.appendChild(lightbox);
-            lightbox.addEventListener('click', () => lightbox.remove());
-            document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { lightbox.remove(); document.removeEventListener('keydown', esc); }});
-        });
-    });
-}
-
-// ========== TOUCH SWIPE ==========
-function initializeTouchSwipe() {
-    let touchStartX = 0, touchEndX = 0;
-    const gallery = document.querySelector('.gallery-grid, .polaroid-gallery');
-    if (gallery) {
-        gallery.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
-        gallery.addEventListener('touchend', e => { touchEndX = e.changedTouches[0].screenX; });
-    }
-}
-
 // ========== SCROLL ANIMATIONS ==========
 function initializeScrollAnimations() {
     const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                if (entry.target.classList.contains('journey-event')) {
-                    const bubble = entry.target.querySelector('.event-bubble');
-                    if (bubble) {
-                        setTimeout(() => {
-                            bubble.style.transform = 'scale(1.1)';
-                            setTimeout(() => { bubble.style.transform = 'scale(1)'; }, 300);
-                        }, 200);
-                    }
-                }
             }
         });
     }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
-    
-    document.querySelectorAll('.journey-event, .milestone, .profile-card, .fact-card, .polaroid-item').forEach(el => scrollObserver.observe(el));
+
+    document.querySelectorAll('.event-card-clean, .venue-card').forEach(el => scrollObserver.observe(el));
 }
 
 // ========== MUSIC PLAYER ==========
@@ -288,19 +145,16 @@ function toggleMusic() {
     const audio = document.getElementById('backgroundMusic');
     const musicBtn = document.querySelector('.music-btn');
     const musicText = document.querySelector('.music-text');
-    
+
     if (!isPlaying) {
-        // For Chrome: load audio first if not loaded
         if (!audioLoaded) {
             audio.load();
             audioLoaded = true;
         }
-        
+
         audio.volume = 1;
-        
-        // Create a play promise with Chrome-friendly handling
         const playPromise = audio.play();
-        
+
         if (playPromise !== undefined) {
             playPromise.then(() => {
                 isPlaying = true;
@@ -308,7 +162,6 @@ function toggleMusic() {
                 if (musicText) musicText.textContent = 'Pause';
             }).catch((error) => {
                 console.log('Audio play failed:', error);
-                // Retry once after a short delay (helps on some Android devices)
                 setTimeout(() => {
                     audio.play().then(() => {
                         isPlaying = true;
@@ -329,25 +182,22 @@ function toggleMusic() {
 }
 
 // ========== WELCOME OVERLAY ==========
-// ========== WELCOME OVERLAY ==========
 function enterInvitation() {
     const overlay = document.getElementById('welcomeOverlay');
     const audio = document.getElementById('backgroundMusic');
     const musicBtn = document.querySelector('.music-btn');
     const musicText = document.querySelector('.music-text');
-    
-    // Track visit count
+
     let visitCount = parseInt(localStorage.getItem('weddingVisitCount') || '0');
     visitCount++;
     localStorage.setItem('weddingVisitCount', visitCount);
-    
-    // Only autoplay music for first 2 visits
+
     if (visitCount <= 2) {
         audio.volume = 1;
         audio.load();
-        
+
         const playPromise = audio.play();
-        
+
         if (playPromise !== undefined) {
             playPromise.then(() => {
                 isPlaying = true;
@@ -359,45 +209,36 @@ function enterInvitation() {
             });
         }
     }
-    
-    // Hide overlay
+
     overlay.classList.add('hidden');
     document.body.classList.remove('overlay-active');
-    
-    // Remove overlay from DOM after animation
+
     setTimeout(() => {
         overlay.remove();
     }, 1000);
 }
 
 // ========== TAB VISIBILITY - PAUSE/RESUME MUSIC ==========
-// Works on both Chrome and Safari (iOS)
 let wasPlayingBeforeHidden = false;
 
 function handleVisibilityChange() {
     const audio = document.getElementById('backgroundMusic');
-    
+
     if (document.hidden || document.webkitHidden) {
-        // Tab is hidden - pause music
         if (isPlaying) {
             wasPlayingBeforeHidden = true;
             audio.pause();
         }
     } else {
-        // Tab is visible - resume music if it was playing before
         if (wasPlayingBeforeHidden && isPlaying) {
             audio.play().catch(() => {});
         }
     }
 }
 
-// Standard browsers
 document.addEventListener('visibilitychange', handleVisibilityChange);
-
-// Safari iOS fallback
 document.addEventListener('webkitvisibilitychange', handleVisibilityChange);
 
-// Additional iOS Safari handling - pause on page hide
 window.addEventListener('pagehide', function() {
     const audio = document.getElementById('backgroundMusic');
     if (isPlaying) {
@@ -413,14 +254,47 @@ window.addEventListener('pageshow', function() {
     }
 });
 
-// Add overlay-active class on page load
 document.body.classList.add('overlay-active');
 
-// ========== MAP FUNCTION ==========
-function openMap() {
-    window.open('https://maps.app.goo.gl/wGuQtCr75jgPhEpt8', '_blank');
+// ========== RSVP FORM ==========
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxB014MGJ8-ASuW_PS_5479qbipvHmVw3kX3zrmgqaTCLg2SLYjdZ68tZS0d_ju5mBn/exec';
+
+let guestCount = 1;
+
+function changeGuests(delta) {
+    guestCount = Math.min(5, Math.max(1, guestCount + delta));
+    document.getElementById('guestCount').textContent = guestCount;
+    document.getElementById('guestsInput').value = guestCount;
 }
 
-// ========== CONSOLE MESSAGE ==========
-console.log('%c💍 Balaji & Krithika\'s Wedding 💍', 'color: #D4AF37; font-size: 20px; font-weight: bold;');
-console.log('%cMade with ❤️ for our special day!', 'color: #4A5D4E; font-size: 14px;');
+async function submitRSVP(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = document.getElementById('rsvpSubmitBtn');
+    const btnText = document.getElementById('rsvpBtnText');
+
+    const data = {
+        name: form.name.value.trim(),
+        side: form.side.value,
+        guests: form.guests.value,
+        attending: form.attending.value
+    };
+
+    btn.disabled = true;
+    btnText.textContent = 'Sending...';
+
+    try {
+        await fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+
+        document.getElementById('rsvpForm').style.display = 'none';
+        document.getElementById('rsvpSuccess').style.display = 'block';
+    } catch (err) {
+        btnText.textContent = 'Something went wrong — try again';
+        btn.disabled = false;
+    }
+}
