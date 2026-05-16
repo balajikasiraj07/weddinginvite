@@ -303,7 +303,7 @@ body.overlay-active {
     width: 100px;
     height: 2px;
     background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
-    margin: var(--spacing-medium) auto;
+    margin: 0.75rem auto;
 }
 
 .invite-prelude {
@@ -311,7 +311,7 @@ body.overlay-active {
     font-size: 1.2rem;
     color: var(--secondary-green);
     font-style: italic;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .families-row {
@@ -319,7 +319,7 @@ body.overlay-active {
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
     flex-wrap: wrap;
 }
 
@@ -353,7 +353,7 @@ body.overlay-active {
     font-size: 1.15rem;
     color: var(--secondary-green);
     font-style: italic;
-    margin-bottom: 1rem;
+    margin-bottom: 0.4rem;
 }
 
 .couple-names {
@@ -432,7 +432,7 @@ body.overlay-active {
     display: flex;
     gap: 2rem;
     justify-content: center;
-    margin: var(--spacing-medium) 0;
+    margin: 0.75rem 0;
 }
 
 .countdown-item {
