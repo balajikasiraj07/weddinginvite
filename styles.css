@@ -580,25 +580,27 @@ body.overlay-active {
 .event-details-clean {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.55rem;
     margin-top: 1rem;
     padding-top: 1rem;
-    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    border-top: 1px solid rgba(212, 175, 55, 0.35);
 }
 
 .event-details-clean span {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    background: rgba(212, 175, 55, 0.1);
-    border: 1px solid rgba(212, 175, 55, 0.25);
-    border-radius: 8px;
-    padding: 0.45rem 0.9rem;
-    font-size: 0.95rem;
-    font-weight: 600;
+    gap: 0.3rem;
+    font-family: var(--font-heading);
+    font-size: 1.03rem;
+    font-weight: 700;
     color: var(--secondary-green);
     letter-spacing: 0.3px;
+}
+
+.event-details-clean span em {
+    font-style: normal;
+    font-size: 1.13rem;
 }
 
 /* ========== Venue Cards ========== */
