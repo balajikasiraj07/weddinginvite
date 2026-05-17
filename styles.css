@@ -581,7 +581,7 @@ body.overlay-active {
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     color: var(--charcoal);
 }
 
