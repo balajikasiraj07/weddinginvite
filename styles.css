@@ -337,7 +337,7 @@ body.overlay-active {
 
 .family-relation {
     font-size: 0.95rem;
-    color: var(--primary-gold);
+    color: var(--secondary-green);
     font-style: italic;
 }
 
