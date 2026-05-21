@@ -588,11 +588,11 @@ body.overlay-active {
 
 .event-details-clean span {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     gap: 0.3rem;
     font-family: var(--font-heading);
-    font-size: 1.03rem;
+    font-size: 0.95rem;
     font-weight: 700;
     color: var(--secondary-green);
     letter-spacing: 0.3px;
