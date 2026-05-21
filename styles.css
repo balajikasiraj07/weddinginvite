@@ -562,6 +562,16 @@ body.overlay-active {
     margin-bottom: 0.25rem;
 }
 
+.event-city-tag {
+    font-size: 0.8rem;
+    font-family: var(--font-body);
+    color: var(--secondary-green);
+    font-weight: 400;
+    opacity: 0.6;
+    display: block;
+    margin-top: -0.2rem;
+}
+
 .event-tamil {
     font-family: var(--font-tamil);
     font-size: 1rem;
